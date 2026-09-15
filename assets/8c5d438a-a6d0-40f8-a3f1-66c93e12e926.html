@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<footer style="background:#08233F;color:#C6D4E4;font-family:'Hanken Grotesk',system-ui,sans-serif">
+  <sc-if value="{{ hasSimpleFooter }}" hint-placeholder-val="{{ false }}">
+    <div style="position:relative">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="position:absolute;left:0;top:-59px;width:100%;height:60px;display:block"><path d="M0,30 C240,0 480,60 720,35 C960,10 1200,55 1440,25 L1440,0 L0,0 Z" fill="#08233F"></path></svg>
+      <div style="max-width:640px;margin:0 auto;padding:56px 24px 36px;text-align:center">
+        <span style="display:inline-flex;width:76px;height:76px;border-radius:50%;border:2px solid rgba(255,255,255,0.18);align-items:center;justify-content:center;background:#0B2A4A;margin-bottom:22px">
+          <img src="{{ simpleLogo }}" alt="Logo" style="width:52px;height:52px;object-fit:contain;border-radius:50%">
+        </span>
+        <p style="font-size:14.5px;line-height:1.7;color:#AEC4DC;margin:0">{{ simpleTagline }}</p>
+      </div>
+      <div style="max-width:1200px;margin:0 auto;padding:22px 24px 32px;border-top:1px solid rgba(255,255,255,0.09);text-align:center">
+        <span style="font-size:13px;color:#7E9BBC">{{ simpleCopyright }}</span>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ hasFullFooter }}" hint-placeholder-val="{{ true }}">
+  <div style="max-width:1200px;margin:0 auto;padding:64px 24px 28px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:40px 28px">
+
+      <div style="min-width:230px;max-width:340px">
+        <a href="{{ homeHref }}" style="display:inline-flex;text-decoration:none;margin-bottom:20px">
+          <span style="background:#fff;border-radius:13px;padding:12px 17px;display:inline-flex;box-shadow:0 8px 22px rgba(0,0,0,0.22)">
+            <img src="assets/1d1e76b2-6327-4ecf-838d-faecd1b6a08d.png" alt="Integra Medical Group" style="height:34px;width:auto;display:block">
+          </span>
+        </a>
+        <p style="font-size:14.5px;line-height:1.65;color:#9DB2CB;margin:0 0 18px">Soluciones integrales en salud para personas, empresas e instituciones, bajo una misma estructura.</p>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13.5px;color:#8AA3C0">
+          <span style="width:7px;height:7px;border-radius:50%;background:#1FC495;flex:none"></span>
+          Montevideo, Uruguay
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-size:12px;font-weight:600;letter-spacing:0.16em;color:#6E89A8;margin:0 0 18px;font-family:inherit">UNIDADES</h4>
+        <div style="display:flex;flex-direction:column;gap:13px">
+          <sc-for list="{{ units }}" as="u" hint-placeholder-count="4">
+            <a href="{{ u.href }}" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:14.5px;color:#C6D4E4" style-hover="color:#fff">
+              <span style="width:7px;height:7px;border-radius:50%;flex:none;background:{{ u.color }}"></span>
+              {{ u.name }}
+            </a>
+          </sc-for>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-size:12px;font-weight:600;letter-spacing:0.16em;color:#6E89A8;margin:0 0 18px;font-family:inherit">GRUPO</h4>
+        <div style="display:flex;flex-direction:column;gap:13px">
+          <a href="{{ homeHref }}#nosotros" style="text-decoration:none;font-size:14.5px;color:#C6D4E4" style-hover="color:#fff">Sobre nosotros</a>
+          <a href="{{ homeHref }}#direccion" style="text-decoration:none;font-size:14.5px;color:#C6D4E4" style-hover="color:#fff">Dirección médica</a>
+          <a href="{{ homeHref }}#porque" style="text-decoration:none;font-size:14.5px;color:#C6D4E4" style-hover="color:#fff">Por qué elegirnos</a>
+          <a href="{{ homeHref }}#contacto" style="text-decoration:none;font-size:14.5px;color:#C6D4E4" style-hover="color:#fff">Contacto</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-size:12px;font-weight:600;letter-spacing:0.16em;color:#6E89A8;margin:0 0 18px;font-family:inherit">CONTACTO</h4>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <sc-if value="{{ showVivamContact }}" hint-placeholder-val="{{ false }}">
+            <a href="https://web.whatsapp.com/send?phone=59898052210" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:14.5px;color:#C6D4E4" style-hover="color:#fff">
+              <span style="color:#25D366;font-size:15px">✆</span>
+              <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size:11.5px;color:#7E9BBC">Vivam</span>098 052 210</span>
+            </a>
+            <a href="mailto:hola@vivam.uy" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;color:#C6D4E4" style-hover="color:#fff">
+              <span style="color:#7E9BBC;font-size:14px;width:15px;text-align:center;flex:none">@</span>
+              <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size:11.5px;color:#7E9BBC">Vivam</span>hola@vivam.uy</span>
+            </a>
+          </sc-if>
+          <sc-if value="{{ showCobContact }}" hint-placeholder-val="{{ false }}">
+            
+            <a href="mailto:administracion@coberturamedicad.com" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;color:#C6D4E4" style-hover="color:#fff">
+              <span style="color:#7E9BBC;font-size:14px;width:15px;text-align:center;flex:none">@</span>
+              <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size: 11.5px; color: rgb(126, 155, 188);">CMD TECH</span>contacto@cmdtech.uy</span>
+            </a>
+            <a href="mailto:rrhh@coberturamedicad.com" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;color:#C6D4E4" style-hover="color:#fff">
+              
+              
+            </a>
+          </sc-if>
+          <sc-if value="{{ showPersonalContact }}" hint-placeholder-val="{{ false }}">
+            <a href="mailto:integrapersonal@integramedicalgroup.uy" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;color:#C6D4E4" style-hover="color:#fff">
+              <span style="color:#7E9BBC;font-size:14px;width:15px;text-align:center;flex:none">@</span>
+              <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size:11.5px;color:#7E9BBC">Integra Personal</span>integrapersonal@integramedicalgroup.uy</span>
+            </a>
+          </sc-if>
+          <a href="mailto:contacto@integramedicalgroup.com" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;color:#C6D4E4" style-hover="color:#fff">
+            <span style="color:#7E9BBC;font-size:14px;width:15px;text-align:center;flex:none">@</span>
+            <span style="display: flex; flex-direction: column; gap: 1px; text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15)"><span style="font-size: 11.5px; color: rgb(126, 155, 188);">Integra Medical Group</span>contacto@integramedicalgroup.uy<br></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.09);display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center">
+      <span style="font-size:13px;color:#7E9BBC">© 2026 Integra Medical Group · Montevideo, Uruguay</span>
+      <span style="font-size:12.5px;color:#5E789A">Soluciones médicas, asistenciales y tecnológicas</span>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ showWa }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;right:22px;bottom:22px;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:12px;font-family:'Hanken Grotesk',system-ui,sans-serif">
+    <sc-if value="{{ waDirectHref }}" hint-placeholder-val="">
+      <a href="{{ waDirectHref }}" target="_blank" rel="noopener" aria-label="WhatsApp" style="display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;border-radius:30px;padding:14px 18px;font-family:inherit;font-size:15px;font-weight:700;box-shadow:0 12px 30px rgba(37,211,102,0.42)">
+        <span style="font-size:19px;line-height:1">✆</span>
+        <span>WhatsApp</span>
+      </a>
+    </sc-if>
+    <sc-if value="{{ hasWaPicker }}" hint-placeholder-val="{{ false }}">
+      <sc-if value="{{ waOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border-radius:18px;box-shadow:0 24px 60px rgba(8,35,63,0.28);padding:10px;width:288px;border:1px solid #E6EDF4">
+          <div style="padding:10px 12px 12px">
+            <div style="font-size:14px;font-weight:700;color:#0B2A4A">Escribinos por WhatsApp</div>
+            <div style="font-size:12.5px;color:#7A8BA0;margin-top:2px">Elegí la unidad para una respuesta directa.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <sc-for list="{{ channels }}" as="c" hint-placeholder-count="2">
+              <a href="{{ c.href }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;text-decoration:none" style-hover="background:#F2F7FB">
+                <span style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:{{ c.tint }};color:{{ c.color }};font-weight:700;font-size:15px">{{ c.initial }}</span>
+                <span style="display:flex;flex-direction:column;gap:1px">
+                  <span style="font-size:13.5px;font-weight:600;color:#0B2A4A;line-height:1.2">{{ c.label }}</span>
+                  <span style="font-size:12.5px;color:#25A04E;font-weight:600">{{ c.display }}</span>
+                </span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+      <button onClick="{{ toggleWa }}" aria-label="WhatsApp" style="display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;border:none;cursor:pointer;border-radius:30px;padding:14px 18px;font-family:inherit;font-size:15px;font-weight:700;box-shadow:0 12px 30px rgba(37,211,102,0.42)">
+        <span style="font-size:19px;line-height:1">✆</span>
+        <span>WhatsApp</span>
+      </button>
+    </sc-if>
+  </div>
+  </sc-if>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:420}}">
+class Component extends DCLogic {
+  state = { waOpen: false };
+  renderVals() {
+    const simpleTagline = this.props.simpleTagline || '';
+    return {
+      hasSimpleFooter: !!simpleTagline,
+      hasFullFooter: !simpleTagline,
+      simpleLogo: this.props.simpleLogo || '',
+      simpleTagline,
+      simpleCopyright: this.props.simpleCopyright || '',
+      showWa: this.props.showWa ?? true,
+      waDirectHref: this.props.waDirectHref || '',
+      hasWaPicker: !this.props.waDirectHref,
+      showCobContact: (this.props.showWa ?? true) && ((this.props.contact ?? 'cobertura') === 'cobertura'),
+      showVivamContact: (this.props.showWa ?? true) && (this.props.contact === 'vivam'),
+      showPersonalContact: this.props.contact === 'personal',
+      waOpen: this.state.waOpen,
+      toggleWa: () => this.setState(s => ({ waOpen: !s.waOpen })),
+      channels: [
+        { label: 'Cobertura Médica Deportiva', display: '096 276 998', href: 'https://web.whatsapp.com/send?phone=59896276998', color: '#2E7DD1', tint: '#E7F0FB', initial: 'C' },
+        { label: 'Vivam · Cuidados domiciliarios', display: '098 052 210', href: 'https://web.whatsapp.com/send?phone=59898052210', color: '#1B9E76', tint: '#E4F5EE', initial: 'V' },
+      ],
+      homeHref: 'Integra Medical Group.dc.html',
+      units: [
+        { name: 'CMD Cobertura Médica Deportiva', href: 'CMD-Cobertura.dc.html', color: '#2E7DD1' },
+        { name: 'Integra Personal', href: 'Integra-Personal.dc.html', color: '#48B8C8' },
+        { name: 'Vivam', href: 'Vivam.dc.html', color: '#1FC495' },
+        { name: 'CMD Tech', href: 'CMD-Tech.dc.html', color: '#7C86F0' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

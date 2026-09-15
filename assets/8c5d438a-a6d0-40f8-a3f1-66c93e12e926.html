@@ -67,18 +67,18 @@
           <sc-if value="{{ showVivamContact }}" hint-placeholder-val="{{ false }}">
             <a href="https://web.whatsapp.com/send?phone=59898052210" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:14.5px;color:#C6D4E4" style-hover="color:#fff">
               <span style="color:#25D366;font-size:15px">✆</span>
-              <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size:11.5px;color:#7E9BBC">Vivam</span>098 052 210</span>
+              <span style="display:flex;flex-direction:column;gap:1px;min-width:0;overflow-wrap:anywhere"><span style="font-size:11.5px;color:#7E9BBC">Vivam</span>098 052 210</span>
             </a>
             <a href="mailto:hola@vivam.uy" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;color:#C6D4E4" style-hover="color:#fff">
               <span style="color:#7E9BBC;font-size:14px;width:15px;text-align:center;flex:none">@</span>
-              <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size:11.5px;color:#7E9BBC">Vivam</span>hola@vivam.uy</span>
+              <span style="display:flex;flex-direction:column;gap:1px;min-width:0;overflow-wrap:anywhere"><span style="font-size:11.5px;color:#7E9BBC">Vivam</span>hola@vivam.uy</span>
             </a>
           </sc-if>
           <sc-if value="{{ showCobContact }}" hint-placeholder-val="{{ false }}">
             
             <a href="mailto:administracion@coberturamedicad.com" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;color:#C6D4E4" style-hover="color:#fff">
               <span style="color:#7E9BBC;font-size:14px;width:15px;text-align:center;flex:none">@</span>
-              <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size: 11.5px; color: rgb(126, 155, 188);">CMD TECH</span>contacto@cmdtech.uy</span>
+              <span style="display:flex;flex-direction:column;gap:1px;min-width:0;overflow-wrap:anywhere"><span style="font-size: 11.5px; color: rgb(126, 155, 188);">CMD TECH</span>contacto@cmdtech.uy</span>
             </a>
             <a href="mailto:rrhh@coberturamedicad.com" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;color:#C6D4E4" style-hover="color:#fff">
               
@@ -88,12 +88,12 @@
           <sc-if value="{{ showPersonalContact }}" hint-placeholder-val="{{ false }}">
             <a href="mailto:integrapersonal@integramedicalgroup.uy" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;color:#C6D4E4" style-hover="color:#fff">
               <span style="color:#7E9BBC;font-size:14px;width:15px;text-align:center;flex:none">@</span>
-              <span style="display:flex;flex-direction:column;gap:1px"><span style="font-size:11.5px;color:#7E9BBC">Integra Personal</span>integrapersonal@integramedicalgroup.uy</span>
+              <span style="display:flex;flex-direction:column;gap:1px;min-width:0;overflow-wrap:anywhere"><span style="font-size:11.5px;color:#7E9BBC">Integra Personal</span>integrapersonal@integramedicalgroup.uy</span>
             </a>
           </sc-if>
-          <a href="mailto:contacto@integramedicalgroup.com" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;color:#C6D4E4" style-hover="color:#fff">
+          <a href="mailto:contacto@integramedicalgroup.uy" style="display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13.5px;color:#C6D4E4" style-hover="color:#fff">
             <span style="color:#7E9BBC;font-size:14px;width:15px;text-align:center;flex:none">@</span>
-            <span style="display: flex; flex-direction: column; gap: 1px; text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15)"><span style="font-size: 11.5px; color: rgb(126, 155, 188);">Integra Medical Group</span>contacto@integramedicalgroup.uy<br></span>
+            <span style="display: flex; flex-direction: column; gap: 1px; min-width: 0; overflow-wrap: anywhere; text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15)"><span style="font-size: 11.5px; color: rgb(126, 155, 188);">Integra Medical Group</span>contacto@integramedicalgroup.uy<br></span>
           </a>
         </div>
       </div>
@@ -125,7 +125,7 @@
             <sc-for list="{{ channels }}" as="c" hint-placeholder-count="2">
               <a href="{{ c.href }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;text-decoration:none" style-hover="background:#F2F7FB">
                 <span style="width:34px;height:34px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;background:{{ c.tint }};color:{{ c.color }};font-weight:700;font-size:15px">{{ c.initial }}</span>
-                <span style="display:flex;flex-direction:column;gap:1px">
+                <span style="display:flex;flex-direction:column;gap:1px;min-width:0;overflow-wrap:anywhere">
                   <span style="font-size:13.5px;font-weight:600;color:#0B2A4A;line-height:1.2">{{ c.label }}</span>
                   <span style="font-size:12.5px;color:#25A04E;font-weight:600">{{ c.display }}</span>
                 </span>

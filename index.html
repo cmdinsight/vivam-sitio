@@ -168,8 +168,8 @@
         <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3vw,38px);line-height:1.16;color:#1B3A6B;margin:0 0 12px">Un plan según lo que necesite tu familia</h2>
         <p style="font-size:15.5px;line-height:1.6;color:#6B7280;margin:0">Cada plan define cuántas horas de cobertura tenés y cuántos procederes de enfermería van incluidos. El horario concreto lo coordinamos con tu familia. Lo demás —cuidador fijo, supervisión médica y reporte diario— viene en todos.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
-        <sc-for list="{{ planes }}" as="p" hint-placeholder-count="4">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px">
+        <sc-for list="{{ planes }}" as="p" hint-placeholder-count="5">
           <div style="background:#FAFBFC;border:1px solid #E5E7EB;border-top:3px solid #2EBCB5;border-radius:16px;padding:26px 24px;display:flex;flex-direction:column">
             <h4 style="font-size:17px;font-weight:700;color:#1B3A6B;margin:0 0 8px;font-family:'Fraunces',serif">{{ p.t }}</h4>
             <div style="font-family:'Fraunces',Georgia,serif;font-size:21px;font-weight:600;color:#177971;line-height:1.2;margin:0 0 3px">{{ p.horas }}</div>

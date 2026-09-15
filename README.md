@@ -77,6 +77,11 @@ dirección médica · cobertura por barrios con mapa · preguntas frecuentes
   CDN externo.
 - **`.image-slots.state.json` da 404** en la consola. Es un sidecar de
   tiempo de diseño del runtime. Inofensivo.
+- **El footer venía con un mailto equivocado.** Apuntaba a
+  `contacto@integramedicalgroup.com` mientras el texto visible decía
+  `.uy`. Corregido acá. Como el footer es un artboard compartido con los
+  otros sitios del grupo, conviene revisar si el mismo error está en
+  cmdtech.uy, coberturamedicad.com e integramedicalgroup.uy.
 - El header y el footer usan el wordmark de Vivam. El diseño original
   traía el logo de Integra Medical Group, que no vino en el export.
 

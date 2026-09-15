@@ -166,13 +166,19 @@
       <div style="max-width:640px;margin-bottom:42px">
         <span style="display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.14em;color:#177971;margin-bottom:14px">PLANES</span>
         <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3vw,38px);line-height:1.16;color:#1B3A6B;margin:0 0 12px">Un plan según lo que necesite tu familia</h2>
-        <p style="font-size:15.5px;line-height:1.6;color:#6B7280;margin:0">Cada plan define una cantidad de horas de cobertura. Lo demás —cuidador fijo, supervisión médica, enfermería y reporte diario— viene incluido en todos.</p>
+        <p style="font-size:15.5px;line-height:1.6;color:#6B7280;margin:0">Cada plan define cuántas horas de cobertura tenés y cuántos procederes de enfermería van incluidos. El horario concreto lo coordinamos con tu familia. Lo demás —cuidador fijo, supervisión médica y reporte diario— viene en todos.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
         <sc-for list="{{ planes }}" as="p" hint-placeholder-count="4">
           <div style="background:#FAFBFC;border:1px solid #E5E7EB;border-top:3px solid #2EBCB5;border-radius:16px;padding:26px 24px;display:flex;flex-direction:column">
-            <h4 style="font-size:17px;font-weight:700;color:#1B3A6B;margin:0 0 10px;font-family:'Fraunces',serif">{{ p.t }}</h4>
-            <p style="font-size:14px;line-height:1.6;color:#6B7280;margin:0 0 18px;flex:1">{{ p.d }}</p>
+            <h4 style="font-size:17px;font-weight:700;color:#1B3A6B;margin:0 0 8px;font-family:'Fraunces',serif">{{ p.t }}</h4>
+            <div style="font-family:'Fraunces',Georgia,serif;font-size:21px;font-weight:600;color:#177971;line-height:1.2;margin:0 0 3px">{{ p.horas }}</div>
+            <div style="font-size:12.5px;color:#8695A8;margin:0 0 14px">{{ p.franja }}</div>
+            <p style="font-size:14px;line-height:1.6;color:#6B7280;margin:0 0 14px;flex:1">{{ p.d }}</p>
+            <div style="display:flex;align-items:flex-start;gap:8px;background:#EAF6F5;border-radius:10px;padding:10px 12px;margin:0 0 16px">
+              <span style="flex:none;margin-top:1px;color:#177971"><svg width="14" height="14" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+              <span style="font-size:12.5px;line-height:1.45;font-weight:600;color:#0F5C56">{{ p.proc }}</span>
+            </div>
             <a href="#contacto" style="text-decoration:none;font-size:14px;font-weight:700;color:#177971">Consultar precio →</a>
           </div>
         </sc-for>
@@ -411,15 +417,28 @@ class Component extends DCLogic {
       { t: 'Enfermería a domicilio', d: 'Curaciones, inyectables, control de signos vitales y manejo de medicación, a cargo de personal de enfermería titulado y bajo indicación médica.', icon: ic('<rect x="3" y="8" width="18" height="13" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M12 12v5M9.5 14.5h5"/>'), tint: '#E7EEFB', color: '#1B3A6B' },
     ];
 
-    // NOTA: las horas semanales exactas y el cupo de procederes de cada plan
-    // están pendientes de confirmación. Las descripciones de cobertura se
-    // infirieron del nombre comercial de cada plan.
+    // Horas y cupo de procederes: valores por defecto de lib/planes.ts del
+    // sistema de gestión. Son editables en vivo por un admin desde
+    // /profesionales, así que conviene contrastarlos contra la pantalla de
+    // configuración antes de darlos por definitivos.
+    // La franja horaria concreta no es un dato del plan: se define por
+    // cliente al armar el cronograma (AsignacionFija).
     const planes = [
-      { t: 'Esencial Lun-Vie', d: 'Cobertura de lunes a viernes, para familias que se organizan para cubrir el fin de semana.' },
-      { t: 'Esencial Completo', d: 'La misma cobertura diaria, extendida a los siete días de la semana.' },
-      { t: 'Extendido', d: 'Jornadas más largas, para cuando unas pocas horas al día ya no alcanzan.' },
-      { t: 'Integral', d: 'Presencia permanente, para quien no puede quedarse solo en ningún momento.' },
-      { t: 'Vivam Nocturno', d: 'Acompañamiento durante la noche, para que la familia pueda descansar.' },
+      { t: 'Esencial Lun-Vie', horas: '40 horas semanales', franja: '8 horas por día, de lunes a viernes',
+        d: 'Para familias que se organizan para cubrir el fin de semana.',
+        proc: 'Incluye 2 procederes de enfermería al mes' },
+      { t: 'Esencial Completo', horas: '56 horas semanales', franja: '8 horas por día, los siete días',
+        d: 'La misma cobertura diaria, sin que el fin de semana quede descubierto.',
+        proc: 'Incluye 2 procederes de enfermería al mes' },
+      { t: 'Extendido', horas: '112 horas semanales', franja: '16 horas por día, los siete días',
+        d: 'Cubre casi todo el día, para cuando unas pocas horas ya no alcanzan.',
+        proc: 'Incluye 5 procederes de enfermería al mes' },
+      { t: 'Integral', horas: '168 horas semanales', franja: '24 horas por día, los siete días',
+        d: 'Presencia permanente, para quien no puede quedarse solo en ningún momento.',
+        proc: 'Incluye 10 procederes de enfermería al mes' },
+      { t: 'Vivam Nocturno', horas: '56 horas semanales', franja: '8 horas por noche, los siete días',
+        d: 'Acompañamiento durante la noche, para que la familia pueda descansar.',
+        proc: 'Incluye 2 procederes de enfermería al mes' },
     ];
 
     const planesIncluye = [
@@ -464,12 +483,16 @@ class Component extends DCLogic {
     const faqData = [
       { q: '¿Cuánto cuesta?',
         a: 'Depende del plan y de las horas que necesite tu familiar. No manejamos precio de lista porque el punto de partida siempre es una valoración médica en el domicilio: recién ahí sabemos qué nivel de cuidado hace falta. Escribinos y te armamos una propuesta concreta, sin compromiso.' },
+      { q: '¿Los procederes de enfermería se cobran aparte?',
+        a: 'No. Cada plan trae un cupo mensual de procederes incluido —curaciones, inyectables, control de signos vitales— que no se factura por separado: van del Esencial con 2 al mes hasta el Integral con 10. Si tu familiar necesita más de los que trae el plan, te lo decimos antes, nunca aparece como sorpresa en la cuenta.' },
       { q: '¿Qué pasa si el cuidador falta?',
         a: 'El servicio no se interrumpe. Como los cuidadores son personal nuestro en relación de dependencia y no contratistas sueltos, tenemos equipo propio para cubrir ausencias, y el reemplazo entra con el plan de cuidado ya cargado — no arranca de cero.' },
       { q: '¿Trabajan con mutualistas?',
         a: 'Vivam es un servicio privado que complementa a tu mutualista, no la reemplaza: la atención médica de urgencia y las consultas siguen donde están hoy. Lo que aportamos es el cuidado en la casa y la supervisión clínica de ese cuidado. Consultanos por convenios vigentes.' },
       { q: '¿Cuánto demoran en empezar?',
         a: 'En general, menos de 72 horas desde el primer contacto: coordinamos la valoración médica en el domicilio, definimos el plan y asignamos al cuidador. En casos de mayor complejidad clínica puede llevar algo más, y te lo decimos de entrada.' },
+      { q: '¿A qué hora va el cuidador?',
+        a: 'El plan define cuántas horas de cobertura tenés; el horario concreto lo armamos con tu familia según la rutina de tu familiar, y queda fijo a partir de ahí. No hay un horario único para todos: no es lo mismo una casa donde lo difícil es la mañana que una donde lo difícil es la noche.' },
       { q: '¿Los cuidadores están en regla?',
         a: 'Sí, y es una diferencia de fondo. Están en relación de dependencia formal con nosotros, con aportes al BPS y cobertura del BSE. No son monotributistas que se contratan por hora: si hay un accidente de trabajo en tu casa, la responsabilidad es nuestra, no de tu familia.' },
       { q: '¿Puedo cambiar de cuidador?',

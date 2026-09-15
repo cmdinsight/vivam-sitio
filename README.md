@@ -43,12 +43,24 @@ dirección médica · cobertura por barrios con mapa · preguntas frecuentes
 - **La sección de dirección médica no tiene foto.** La del export era una
   imagen de stock y se sacó. El hueco de 160px está esperando una foto
   real del Dr. González.
-- **Faltan las horas de cada plan.** Los cinco planes están por nombre
-  comercial, pero sin las horas semanales ni el cupo de procederes de
-  enfermería. Las descripciones de cobertura se infirieron del nombre.
+- **Las horas y el cupo de cada plan salen de `lib/planes.ts`** del
+  sistema de gestión, que son valores por defecto **editables en vivo**
+  por un admin desde /profesionales. Si alguien los cambió después de la
+  carga inicial, el sitio queda desactualizado sin que nadie se entere.
+  Contrastarlos contra la pantalla de configuración cada tanto.
 - **Cinco respuestas de la sección de preguntas frecuentes** afirman
-  políticas de negocio pendientes de validar. Están listadas en un
-  comentario dentro de `index.html`, arriba de `faqData`.
+  políticas de negocio que siguen sin confirmar. Están listadas en un
+  comentario dentro de `index.html`, arriba de `faqData`. Se consultó al
+  sistema de gestión y ninguna de las cinco está documentada en el
+  código: son decisiones operativas que hay que validar con el equipo,
+  no con el software. En particular, el modelo de datos **no tiene
+  ningún concepto de cuidador suplente** — el único backup que existe es
+  para guardia médica (`TurnoGuardia.medicoBackupId`).
+- **La promesa de "menos de 72 horas" aparece dos veces en el sitio** —
+  en el CTA final y en "Por qué Vivam" — y nadie la puede respaldar con
+  datos: el sistema no mide el tiempo entre primer contacto e inicio de
+  servicio, y `Cliente.createdAt` no sirve como proxy. Es una promesa
+  pública sin medición detrás. O se mide, o conviene suavizarla.
 - **No hay testimonios.** La sección se retiró; el comentario en el HTML
   explica cómo restaurarla con reseñas reales.
 - **Las fuentes vienen de Google Fonts** (Fraunces e Inter en la página,
@@ -71,12 +83,24 @@ Uruguay no incluye a Estados Unidos en su lista de países con nivel de
 protección adecuado, así que una transferencia internacional de datos
 sensibles necesita una base legal específica. El artículo 23 de la Ley
 18.331 prevé el consentimiento expreso del titular como una de las
-excepciones, y es la que la política invoca hoy. Falta que un abogado
-confirme que alcanza para este caso, y si corresponde inscribir la base
-de datos ante la URCDP.
+excepciones, y es la que la política invoca hoy.
 
-Al migrar a Supabase conviene mirar qué regiones ofrece: si hay alguna
-opción más cercana o en la Unión Europea, simplifica el asunto.
+Estado real, verificado contra el repositorio del sistema de gestión:
+
+- **No hay ningún análisis legal hecho.** Ni documento de evaluación de
+  transferencia internacional, ni cláusulas contractuales tipo.
+- **No hay evidencia de inscripción ante la URCDP.** Tratándose de datos
+  de salud, es probable que corresponda.
+- La base corre en **Neon Postgres provisionado por la integración de
+  Vercel**, sin control directo sobre la región: por defecto queda en
+  Estados Unidos.
+
+Esto no se resuelve escribiendo código ni contenido. Antes de migrar a
+Supabase o de escalar la recolección de datos de salud conviene una
+consulta con abogado especializado en protección de datos, y evaluar con
+esa persona si el consentimiento del artículo 23 alcanza o si hacen falta
+cláusulas contractuales o una región de hosting en un país con nivel
+adecuado. Al elegir región en Supabase, mirar qué opciones ofrece.
 
 **Domicilio del responsable.** La política dice "Montevideo, Uruguay" sin
 la dirección completa. La dirección fiscal se quitó a propósito: el

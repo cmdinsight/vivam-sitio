@@ -119,7 +119,8 @@
     <div style="max-width:1160px;margin:0 auto">
       <div style="max-width:640px;margin-bottom:42px">
         <span style="display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.14em;color:#177971;margin-bottom:14px">SERVICIOS</span>
-        <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3vw,38px);line-height:1.16;color:#1B3A6B;margin:0">Un plan de cuidado para cada etapa</h2>
+        <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3vw,38px);line-height:1.16;color:#1B3A6B;margin:0 0 12px">Un plan de cuidado para cada etapa</h2>
+        <p style="font-size:15.5px;line-height:1.6;color:#6B7280;margin:0">En todos, quien llega a tu casa es personal propio, evaluado y en relación de dependencia formal, trabajando sobre un plan que define y supervisa un médico.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:24px">
         <sc-for list="{{ servicios }}" as="s" hint-placeholder-count="3">
@@ -164,8 +165,8 @@
     <div style="max-width:1160px;margin:0 auto">
       <div style="max-width:640px;margin-bottom:42px">
         <span style="display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.14em;color:#177971;margin-bottom:14px">PLANES</span>
-        <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3vw,38px);line-height:1.16;color:#1B3A6B;margin:0 0 12px">Flexible según lo que necesite tu familia</h2>
-        <p style="font-size:15.5px;line-height:1.6;color:#6B7280;margin:0">Armamos el plan a medida — consultanos sin compromiso.</p>
+        <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3vw,38px);line-height:1.16;color:#1B3A6B;margin:0 0 12px">Un plan según lo que necesite tu familia</h2>
+        <p style="font-size:15.5px;line-height:1.6;color:#6B7280;margin:0">Cada plan define una cantidad de horas de cobertura. Lo demás —cuidador fijo, supervisión médica, enfermería y reporte diario— viene incluido en todos.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
         <sc-for list="{{ planes }}" as="p" hint-placeholder-count="4">
@@ -175,6 +176,18 @@
             <a href="#contacto" style="text-decoration:none;font-size:14px;font-weight:700;color:#177971">Consultar precio →</a>
           </div>
         </sc-for>
+      </div>
+
+      <div style="margin-top:26px;background:#EAF6F5;border:1px solid #CDECE9;border-radius:18px;padding:clamp(24px,3vw,32px)">
+        <h3 style="font-family:'Fraunces',Georgia,serif;font-size:19px;font-weight:600;color:#0F5C56;margin:0 0 18px">Todos los planes incluyen</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+          <sc-for list="{{ planesIncluye }}" as="inc" hint-placeholder-count="4">
+            <div style="display:flex;align-items:flex-start;gap:11px">
+              <span style="flex:none;margin-top:2px;color:#177971"><svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+              <span style="font-size:14.5px;line-height:1.55;color:#33455C">{{ inc }}</span>
+            </div>
+          </sc-for>
+        </div>
       </div>
     </div>
   </section>
@@ -217,28 +230,13 @@
     </div>
   </section>
 
-  <!-- TESTIMONIOS -->
-  <!-- Testimonios ilustrativos: reemplazar por reseñas reales de familias cuando estén disponibles -->
-  <section style="background:#fff;padding:clamp(56px,6vw,92px) 24px">
-    <div style="max-width:1160px;margin:0 auto">
-      <div style="max-width:640px;margin-bottom:42px">
-        <span style="display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.14em;color:#177971;margin-bottom:14px">TESTIMONIOS</span>
-        <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3vw,38px);line-height:1.16;color:#1B3A6B;margin:0 0 8px">Lo que dicen las familias</h2>
-        <p style="font-size:13px;color:#9AA5B4;margin:0;font-style:italic">Testimonios ilustrativos — a reemplazar por reseñas reales.</p>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
-        <sc-for list="{{ testimonios }}" as="tm" hint-placeholder-count="3">
-          <div style="background:#FAFBFC;border:1px solid #E5E7EB;border-radius:18px;padding:28px 26px;display:flex;flex-direction:column;gap:16px">
-            <p style="font-size:15px;line-height:1.65;color:#33455C;margin:0;font-style:italic">“{{ tm.quote }}”</p>
-            <div style="display:flex;align-items:center;gap:12px;margin-top:auto">
-              <span style="width:42px;height:42px;border-radius:50%;flex:none;background:{{ tm.color }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:17px">{{ tm.initial }}</span>
-              <div><div style="font-size:14px;font-weight:700;color:#1B3A6B">{{ tm.name }}</div><div style="font-size:12.5px;color:#6B7280">{{ tm.rel }}</div></div>
-            </div>
-          </div>
-        </sc-for>
-      </div>
-    </div>
-  </section>
+  <!-- TESTIMONIOS — seccion retirada.
+       Tenia tres testimonios inventados (Lucia R., Andres P., Marta S.) que el
+       propio HTML declaraba como "ilustrativos". Se quitaron por ser contenido
+       falso atribuido a personas con nombre y apellido en un sitio de salud en
+       produccion. Para restaurarla: recuperar el bloque <section> y el array
+       `testimonios` del commit 61ddfe1, y volver a exponer `testimonios` en el
+       return de renderVals(). -->
 
   <!-- EQUIPO MÉDICO -->
   <section id="equipo" style="background:#FAFBFC;padding:clamp(56px,6vw,92px) 24px;scroll-margin-top:90px">
@@ -408,23 +406,34 @@ class Component extends DCLogic {
     ];
 
     const servicios = [
-      { t: 'Acompañamiento y cuidados básicos', d: 'Compañía diaria, apoyo en higiene, movilidad y actividades cotidianas.', icon: ic('<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>'), tint: '#EAF6F5', color: '#177971' },
-      { t: 'Cuidados especializados', d: 'Alzheimer, post-operatorio, oncológico y cuidados paliativos, con protocolo médico.', icon: ic('<path d="M12 2 4 5v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V5l-8-3z"/><path d="m9 12 2 2 4-4"/>'), tint: '#FBF1DE', color: '#96731E' },
-      { t: 'Enfermería a domicilio', d: 'Personal de enfermería para curaciones, medicación y controles en el hogar.', icon: ic('<rect x="3" y="8" width="18" height="13" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M12 12v5M9.5 14.5h5"/>'), tint: '#E7EEFB', color: '#1B3A6B' },
+      { t: 'Acompañamiento y cuidados básicos', d: 'Higiene, movilidad, alimentación y compañía, siguiendo un plan de cuidado que define un médico — no lo improvisa el cuidador. Con reporte diario a la familia.', icon: ic('<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>'), tint: '#EAF6F5', color: '#177971' },
+      { t: 'Cuidados especializados', d: 'Alzheimer y otras demencias, post-operatorio, oncológico y cuidados paliativos. Cada patología con su protocolo clínico y seguimiento del equipo médico.', icon: ic('<path d="M12 2 4 5v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V5l-8-3z"/><path d="m9 12 2 2 4-4"/>'), tint: '#FBF1DE', color: '#96731E' },
+      { t: 'Enfermería a domicilio', d: 'Curaciones, inyectables, control de signos vitales y manejo de medicación, a cargo de personal de enfermería titulado y bajo indicación médica.', icon: ic('<rect x="3" y="8" width="18" height="13" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M12 12v5M9.5 14.5h5"/>'), tint: '#E7EEFB', color: '#1B3A6B' },
     ];
 
+    // NOTA: las horas semanales exactas y el cupo de procederes de cada plan
+    // están pendientes de confirmación. Las descripciones de cobertura se
+    // infirieron del nombre comercial de cada plan.
     const planes = [
-      { t: '8h diurno', d: 'Acompañamiento durante el día para las actividades cotidianas.' },
-      { t: '8h nocturno', d: 'Presencia durante la noche para descanso y seguridad.' },
-      { t: '24h', d: 'Cobertura continua para quienes necesitan asistencia permanente.' },
-      { t: 'Enfermería', d: 'Visitas o presencia de enfermería según indicación médica.' },
+      { t: 'Esencial Lun-Vie', d: 'Cobertura de lunes a viernes, para familias que se organizan para cubrir el fin de semana.' },
+      { t: 'Esencial Completo', d: 'La misma cobertura diaria, extendida a los siete días de la semana.' },
+      { t: 'Extendido', d: 'Jornadas más largas, para cuando unas pocas horas al día ya no alcanzan.' },
+      { t: 'Integral', d: 'Presencia permanente, para quien no puede quedarse solo en ningún momento.' },
+      { t: 'Vivam Nocturno', d: 'Acompañamiento durante la noche, para que la familia pueda descansar.' },
+    ];
+
+    const planesIncluye = [
+      'El mismo cuidador siempre, en relación de dependencia formal — no rotan desconocidos por tu casa',
+      'Plan de cuidado definido y supervisado por la dirección médica',
+      'Procederes de enfermería incluidos: curaciones, inyectables y controles, sin costo aparte',
+      'Reporte diario documentado de cómo pasó el día tu familiar',
     ];
 
     const pasos = [
       { n: '01', t: 'Nos contactás', d: 'Por WhatsApp o el formulario, contanos la situación de tu familiar.' },
-      { n: '02', t: 'Valoración médica en domicilio', d: 'Un profesional evalúa las necesidades reales en el hogar.' },
-      { n: '03', t: 'Asignamos al cuidador adecuado', d: 'Elegimos el perfil que mejor se adapta al caso.' },
-      { n: '04', t: 'Iniciamos con seguimiento', d: 'Comenzamos el servicio con supervisión y reporte continuo.' },
+      { n: '02', t: 'Valoración médica en domicilio', d: 'Un médico va a la casa, evalúa la situación real y define el plan de cuidado.' },
+      { n: '03', t: 'Asignamos al cuidador adecuado', d: 'Lo elegimos entre nuestro propio personal, evaluado y contratado en regla.' },
+      { n: '04', t: 'Iniciamos con seguimiento', d: 'Arrancamos con supervisión clínica del equipo médico y reporte diario documentado.' },
     ];
 
     const porque = [
@@ -436,12 +445,6 @@ class Component extends DCLogic {
       { t: 'Respuesta rápida', d: 'Menos de 72 horas para iniciar el servicio desde el primer contacto.', icon: ic('<path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/>') },
     ];
 
-    const testimonios = [
-      { quote: 'Desde que empezamos con Vivam, mi mamá tiene compañía todos los días y nosotros dormimos tranquilos.', name: 'Lucía R.', rel: 'Hija de paciente', initial: 'L', color: '#1B3A6B' },
-      { quote: 'El seguimiento médico marcó la diferencia. Siempre supimos qué estaba pasando.', name: 'Andrés P.', rel: 'Hijo de paciente', initial: 'A', color: '#177971' },
-      { quote: 'La cuidadora que asignaron es muy atenta y responsable. Se nota que hay una selección seria detrás.', name: 'Marta S.', rel: 'Familiar a cargo', initial: 'M', color: '#96731E' },
-    ];
-
     const zonas = ['Centro', 'Pocitos', 'Punta Carretas', 'Carrasco', 'Malvín', 'Prado', 'Cordón', 'Parque Rodó', 'Punta Gorda'];
     const zonaDots = [
       { x: 60, y: 205 }, { x: 250, y: 240 }, { x: 210, y: 225 },
@@ -449,15 +452,32 @@ class Component extends DCLogic {
       { x: 160, y: 190 }, { x: 175, y: 245 }, { x: 290, y: 90 },
     ];
 
+    // PENDIENTE DE VALIDACION — cinco de estas respuestas afirman politicas de
+    // negocio que hay que confirmar antes de darlas por buenas:
+    //   'Que pasa si el cuidador falta'  -> equipo propio de reemplazo
+    //   'Trabajan con mutualistas'       -> complementario, convenios vigentes
+    //   'Cuanto demoran en empezar'      -> menos de 72 horas
+    //   'Puedo cambiar de cuidador'      -> reemplazo sin justificar
+    //   'Atienden fuera de Montevideo'   -> solo Montevideo
+    // Las otras tres (costo, cuidadores en regla, supervision) se apoyan en
+    // hechos ya confirmados por la direccion.
     const faqData = [
-      { q: '¿Cuánto cuesta?', a: 'El costo depende del plan y las horas necesarias. Escribinos y te armamos una propuesta según tu caso, sin compromiso.' },
-      { q: '¿Qué pasa si el cuidador falta?', a: 'Contamos con reemplazos disponibles para que el servicio no se interrumpa.' },
-      { q: '¿Trabajan con mutualistas?', a: 'Vivam es un servicio privado complementario; consultanos por convenios vigentes con tu mutualista.' },
-      { q: '¿Cuánto demoran en empezar?', a: 'En menos de 72 horas desde el primer contacto, salvo casos de mayor complejidad.' },
-      { q: '¿Los cuidadores están en regla?', a: 'Sí, todos están en relación de dependencia formal, con BPS y BSE.' },
-      { q: '¿Puedo cambiar de cuidador?', a: 'Sí, si el vínculo no es el adecuado, coordinamos un reemplazo.' },
-      { q: '¿Atienden fuera de Montevideo?', a: 'Por ahora nos enfocamos en Montevideo; consultanos por tu zona puntual.' },
-      { q: '¿Cómo supervisan el servicio?', a: 'Con reporte diario a la familia y supervisión clínica permanente del equipo médico.' },
+      { q: '¿Cuánto cuesta?',
+        a: 'Depende del plan y de las horas que necesite tu familiar. No manejamos precio de lista porque el punto de partida siempre es una valoración médica en el domicilio: recién ahí sabemos qué nivel de cuidado hace falta. Escribinos y te armamos una propuesta concreta, sin compromiso.' },
+      { q: '¿Qué pasa si el cuidador falta?',
+        a: 'El servicio no se interrumpe. Como los cuidadores son personal nuestro en relación de dependencia y no contratistas sueltos, tenemos equipo propio para cubrir ausencias, y el reemplazo entra con el plan de cuidado ya cargado — no arranca de cero.' },
+      { q: '¿Trabajan con mutualistas?',
+        a: 'Vivam es un servicio privado que complementa a tu mutualista, no la reemplaza: la atención médica de urgencia y las consultas siguen donde están hoy. Lo que aportamos es el cuidado en la casa y la supervisión clínica de ese cuidado. Consultanos por convenios vigentes.' },
+      { q: '¿Cuánto demoran en empezar?',
+        a: 'En general, menos de 72 horas desde el primer contacto: coordinamos la valoración médica en el domicilio, definimos el plan y asignamos al cuidador. En casos de mayor complejidad clínica puede llevar algo más, y te lo decimos de entrada.' },
+      { q: '¿Los cuidadores están en regla?',
+        a: 'Sí, y es una diferencia de fondo. Están en relación de dependencia formal con nosotros, con aportes al BPS y cobertura del BSE. No son monotributistas que se contratan por hora: si hay un accidente de trabajo en tu casa, la responsabilidad es nuestra, no de tu familia.' },
+      { q: '¿Puedo cambiar de cuidador?',
+        a: 'Sí. El vínculo con quien cuida a un familiar es personal y no siempre funciona a la primera; si no se da, coordinamos un reemplazo sin que tengas que justificarlo. El plan de cuidado se transfiere al nuevo cuidador.' },
+      { q: '¿Atienden fuera de Montevideo?',
+        a: 'Hoy trabajamos en Montevideo, porque la supervisión médica presencial y la respuesta rápida son parte del servicio y no queremos prometer lo que no podemos sostener. Si estás en zona metropolitana, consultanos igual.' },
+      { q: '¿Cómo supervisan el servicio?',
+        a: 'De dos maneras. El cuidador deja un reporte diario de cómo pasó el día tu familiar, que la familia recibe. Y por encima de eso hay un médico que definió el plan de cuidado, lo revisa y está disponible para coordinar ante cualquier señal de alerta. No es "confiá en nosotros": queda documentado.' },
     ];
     const faqs = faqData.map((f, i) => ({
       q: f.q, a: f.a,
@@ -485,7 +505,7 @@ class Component extends DCLogic {
       cgShowNav: frameIds.length > 1,
       cgHasEmpty: cgEmptyTiles.length > 0,
       cgCounter: (cur + 1) + ' / ' + frameIds.length,
-      trustItems, servicios, planes, pasos, porque, testimonios, zonas, zonaDots, faqs,
+      trustItems, servicios, planes, planesIncluye, pasos, porque, zonas, zonaDots, faqs,
       form: this.state.form,
       onNombre: (e) => this.set('nombre', e),
       onTelefono: (e) => this.set('telefono', e),

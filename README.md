@@ -63,10 +63,12 @@ dirección médica · cobertura por barrios con mapa · preguntas frecuentes
   el sitio habla de "días, no semanas" y promete un plazo concreto recién
   cuando se conoce el caso. Si algún día se mide el plazo real, se puede
   volver a poner un número — pero con dato detrás.
-- **Quedan dos promesas de tiempo sin medición**, heredadas del diseño
-  original: "Respuesta en menos de 1 hora" en la tarjeta del hero y
-  "Respuesta en menos de 1h" en la barra de confianza. Mismo problema que
-  tenían las 72 horas: nadie mide el tiempo de respuesta. Revisar.
+- **No queda ninguna promesa de tiempo con número en el sitio.** Las dos
+  que sobrevivían del diseño original —"Respuesta en menos de 1 hora" en
+  el hero y "Respuesta en menos de 1h" en la barra de confianza— pasaron
+  a "el mismo día". Si algún día se mide el tiempo de respuesta real, se
+  puede volver a un número; hasta entonces, el sitio no promete nada que
+  no se pueda sostener.
 - **No hay testimonios.** La sección se retiró; el comentario en el HTML
   explica cómo restaurarla con reseñas reales.
 - **Las fuentes vienen de Google Fonts** (Fraunces e Inter en la página,

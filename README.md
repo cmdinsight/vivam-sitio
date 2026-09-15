@@ -9,6 +9,9 @@ publica los archivos tal cual en cada push a `main`.
 ## Estructura
 
 - `index.html` — la landing completa.
+- `privacidad.html` — política de privacidad. Página aparte, HTML plano,
+  sin el runtime de Claude Design. Enlazada desde el footer y desde la
+  casilla de aceptación del formulario.
 - `assets/` — logo, mapa, el runtime de Claude Design y React 18 UMD.
 - `favicon.ico`, `apple-touch-icon.png`.
 
@@ -28,20 +31,26 @@ mapa** o la página deja de cargar.
 ## Secciones
 
 Hero · barra de confianza · dos puertas de entrada (familias / trabajar
-como cuidador) · planes por etapa · modalidades · cuatro pasos · seis
-razones · testimonios · dirección médica · cobertura por barrios con mapa
-· preguntas frecuentes · formulario de contacto.
+como cuidador) · servicios · planes · cuatro pasos · seis razones ·
+dirección médica · cobertura por barrios con mapa · preguntas frecuentes
+· formulario de contacto.
 
 ## Cosas que conviene saber antes de tocarlo
 
 - **El formulario no tiene backend.** Arma un mensaje de WhatsApp y abre
   `web.whatsapp.com/send?phone=59898052210`. Si algún día se quiere
   recibir los contactos por mail o guardarlos en base, hay que agregarlo.
-- **Los testimonios son ilustrativos.** Están marcados como tales en el
-  propio HTML. Reemplazar por reseñas reales cuando haya.
 - **La sección de dirección médica no tiene foto.** La del export era una
   imagen de stock y se sacó. El hueco de 160px está esperando una foto
   real del Dr. González.
+- **Faltan las horas de cada plan.** Los cinco planes están por nombre
+  comercial, pero sin las horas semanales ni el cupo de procederes de
+  enfermería. Las descripciones de cobertura se infirieron del nombre.
+- **Cinco respuestas de la sección de preguntas frecuentes** afirman
+  políticas de negocio pendientes de validar. Están listadas en un
+  comentario dentro de `index.html`, arriba de `faqData`.
+- **No hay testimonios.** La sección se retiró; el comentario en el HTML
+  explica cómo restaurarla con reseñas reales.
 - **Las fuentes vienen de Google Fonts** (Fraunces e Inter en la página,
   Source Serif 4 y Hanken Grotesk en header y footer). React y el runtime
   de Claude Design van empaquetados a propósito, para no depender de un
@@ -50,6 +59,37 @@ razones · testimonios · dirección médica · cobertura por barrios con mapa
   tiempo de diseño del runtime. Inofensivo.
 - El header y el footer usan el wordmark de Vivam. El diseño original
   traía el logo de Integra Medical Group, que no vino en el export.
+
+## Pendientes legales anotados
+
+**Transferencia internacional de datos de salud — a revisar con abogado.**
+La política de privacidad declara que los datos del servicio (historia
+clínica, reportes diarios, datos de cuidadores) se alojan en Neon, y más
+adelante en Supabase, con servidores en Estados Unidos.
+
+Uruguay no incluye a Estados Unidos en su lista de países con nivel de
+protección adecuado, así que una transferencia internacional de datos
+sensibles necesita una base legal específica. El artículo 23 de la Ley
+18.331 prevé el consentimiento expreso del titular como una de las
+excepciones, y es la que la política invoca hoy. Falta que un abogado
+confirme que alcanza para este caso, y si corresponde inscribir la base
+de datos ante la URCDP.
+
+Al migrar a Supabase conviene mirar qué regiones ofrece: si hay alguna
+opción más cercana o en la Unión Europea, simplifica el asunto.
+
+**Domicilio del responsable.** La política dice "Montevideo, Uruguay" sin
+la dirección completa. La dirección fiscal se quitó a propósito: el
+domicilio corresponde a un apartamento particular, y para ejercer los
+derechos de la Ley 18.331 alcanza con el email y el teléfono, que sí
+figuran. El dato completo está en el RUT y en el registro de la URCDP. Si
+un abogado indica que el domicilio completo debe figurar en la página, se
+restaura en el punto 1.
+
+**Plazos y criterios vigentes.** Consultas que no avanzaron a servicio: 12
+meses. Historia clínica: se archiva, no se destruye, con acceso permanente
+del titular. Si eso cambia, hay que actualizar los puntos 8 y 9 de la
+política, que están escritos uno en función del otro.
 
 ## Probarlo local
 

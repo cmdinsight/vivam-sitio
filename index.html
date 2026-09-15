@@ -309,7 +309,7 @@
   <!-- CTA FINAL -->
   <section style="background:#1B3A6B;padding:clamp(52px,6vw,84px) 24px">
     <div style="max-width:900px;margin:0 auto;text-align:center">
-      <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3.4vw,40px);line-height:1.18;color:#fff;margin:0 0 16px">Empezá hoy. Una llamada y un médico en tu casa antes de 72 horas.</h2>
+      <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,3.4vw,40px);line-height:1.18;color:#fff;margin:0 0 16px">Empezá hoy. Una llamada, y coordinamos la valoración médica en tu casa.</h2>
       <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:26px">
         <a href="#contacto" style="display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-size:15.5px;font-weight:700;color:#1B3A6B;background:#E8B85A;padding:15px 28px;border-radius:12px" style-hover="filter:brightness(1.05);transform:translateY(-2px)">Pedí tu presupuesto sin compromiso</a>
         <a href="https://web.whatsapp.com/send?phone=59898052210&amp;text=Hola%2C%20quiero%20consultar%20sobre%20cuidados%20domiciliarios%20de%20Vivam" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-size:15.5px;font-weight:600;color:#fff;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.34);padding:15px 26px;border-radius:12px" style-hover="background:rgba(255,255,255,0.18)">✆ WhatsApp</a>
@@ -461,7 +461,7 @@ class Component extends DCLogic {
       { t: 'Supervisión clínica 24/7', d: 'Coordinación médica disponible ante cualquier señal de alerta.', icon: ic('<circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/>') },
       { t: 'Reporte diario a la familia', d: 'Seguimiento transparente de cómo está tu familiar cada día.', icon: ic('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6"/><path d="M9 11h2"/>') },
       { t: 'Respaldo de Integra Medical Group', d: 'La solidez de un grupo de salud integrado detrás del servicio.', icon: ic('<path d="M12 2 4 5v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V5l-8-3z"/>') },
-      { t: 'Respuesta rápida', d: 'Menos de 72 horas para iniciar el servicio desde el primer contacto.', icon: ic('<path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/>') },
+      { t: 'Puesta en marcha rápida', d: 'Coordinamos la valoración médica apenas nos escribís, y el plan queda armado en cuestión de días.', icon: ic('<path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/>') },
     ];
 
     const zonas = ['Centro', 'Pocitos', 'Punta Carretas', 'Carrasco', 'Malvín', 'Prado', 'Cordón', 'Parque Rodó', 'Punta Gorda'];
@@ -475,7 +475,9 @@ class Component extends DCLogic {
     // negocio que hay que confirmar antes de darlas por buenas:
     //   'Que pasa si el cuidador falta'  -> equipo propio de reemplazo
     //   'Trabajan con mutualistas'       -> complementario, convenios vigentes
-    //   'Cuanto demoran en empezar'      -> menos de 72 horas
+    //   'Cuanto demoran en empezar'      -> "dias, no semanas" (se suavizo:
+    //                                        antes decia 72 horas, que el
+    //                                        sistema no mide ni respalda)
     //   'Puedo cambiar de cuidador'      -> reemplazo sin justificar
     //   'Atienden fuera de Montevideo'   -> solo Montevideo
     // Las otras tres (costo, cuidadores en regla, supervision) se apoyan en
@@ -490,7 +492,7 @@ class Component extends DCLogic {
       { q: '¿Trabajan con mutualistas?',
         a: 'Vivam es un servicio privado que complementa a tu mutualista, no la reemplaza: la atención médica de urgencia y las consultas siguen donde están hoy. Lo que aportamos es el cuidado en la casa y la supervisión clínica de ese cuidado. Consultanos por convenios vigentes.' },
       { q: '¿Cuánto demoran en empezar?',
-        a: 'En general, menos de 72 horas desde el primer contacto: coordinamos la valoración médica en el domicilio, definimos el plan y asignamos al cuidador. En casos de mayor complejidad clínica puede llevar algo más, y te lo decimos de entrada.' },
+        a: 'El primer paso es la valoración médica en el domicilio, así que depende de cuándo podamos coordinarla con tu familia y de la complejidad del caso. En general hablamos de días, no de semanas: visita, plan de cuidado y asignación del cuidador. Cuando nos escribas te damos un plazo concreto para tu situación, no una promesa genérica.' },
       { q: '¿A qué hora va el cuidador?',
         a: 'El plan define cuántas horas de cobertura tenés; el horario concreto lo armamos con tu familia según la rutina de tu familiar, y queda fijo a partir de ahí. No hay un horario único para todos: no es lo mismo una casa donde lo difícil es la mañana que una donde lo difícil es la noche.' },
       { q: '¿Los cuidadores están en regla?',

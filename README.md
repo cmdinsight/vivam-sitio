@@ -56,11 +56,17 @@ dirección médica · cobertura por barrios con mapa · preguntas frecuentes
   no con el software. En particular, el modelo de datos **no tiene
   ningún concepto de cuidador suplente** — el único backup que existe es
   para guardia médica (`TurnoGuardia.medicoBackupId`).
-- **La promesa de "menos de 72 horas" aparece dos veces en el sitio** —
-  en el CTA final y en "Por qué Vivam" — y nadie la puede respaldar con
-  datos: el sistema no mide el tiempo entre primer contacto e inicio de
-  servicio, y `Cliente.createdAt` no sirve como proxy. Es una promesa
-  pública sin medición detrás. O se mide, o conviene suavizarla.
+- **La promesa de "menos de 72 horas" se retiró del sitio.** Aparecía en
+  el CTA final, en "Por qué Vivam" y en las preguntas frecuentes, y nadie
+  la podía respaldar: el sistema no mide el tiempo entre primer contacto
+  e inicio de servicio, y `Cliente.createdAt` no sirve como proxy. Ahora
+  el sitio habla de "días, no semanas" y promete un plazo concreto recién
+  cuando se conoce el caso. Si algún día se mide el plazo real, se puede
+  volver a poner un número — pero con dato detrás.
+- **Quedan dos promesas de tiempo sin medición**, heredadas del diseño
+  original: "Respuesta en menos de 1 hora" en la tarjeta del hero y
+  "Respuesta en menos de 1h" en la barra de confianza. Mismo problema que
+  tenían las 72 horas: nadie mide el tiempo de respuesta. Revisar.
 - **No hay testimonios.** La sección se retiró; el comentario en el HTML
   explica cómo restaurarla con reseñas reales.
 - **Las fuentes vienen de Google Fonts** (Fraunces e Inter en la página,

@@ -29,7 +29,6 @@
   *{box-sizing:border-box}
   ::selection{background:#2EBCB5;color:#fff}
   @keyframes vivamFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-  image-slot{display:block;width:100%;height:100%}
 </style>
 </helmet>
 
@@ -134,29 +133,18 @@
       <div style="position:relative;border-radius:20px;overflow:hidden;aspect-ratio:3/2;max-width:820px;margin:0 auto;box-shadow:0 14px 36px rgba(27,58,107,0.12);background:#EAF6F5">
         <sc-for list="{{ cgSlides }}" as="s" hint-placeholder-count="4">
           <div style="{{ s.style }}">
-            <x-import component-from-global-scope="image-slot" from="assets/736a10fa-34ae-47d5-934b-83411dc335e1.js#/image-slot.js" id="{{ s.id }}" shape="rect" placeholder="{{ s.placeholder }}" style="width:100%;height:100%;display:block" hint-size="100%,100%"></x-import>
+            <img src="{{ s.src }}" alt="{{ s.alt }}" loading="lazy" decoding="async" width="1280" height="853" style="width:100%;height:100%;object-fit:cover;display:block">
           </div>
         </sc-for>
-        <sc-if value="{{ cgShowNav }}" hint-placeholder-val="{{ false }}">
-          <div style="position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(transparent,rgba(27,58,107,0.45));pointer-events:none"></div>
-          <div style="position:absolute;left:20px;bottom:16px;display:flex;gap:8px">
-            <sc-for list="{{ cgDots }}" as="d" hint-placeholder-count="2">
-              <span sc-camel-on-click="{{ d.go }}" style="{{ d.dot }}"></span>
-            </sc-for>
-          </div>
-          <div style="position:absolute;right:18px;bottom:14px;background:rgba(27,58,107,0.72);border-radius:30px;padding:6px 13px;font-size:12px;font-weight:700;color:#fff">{{ cgCounter }}</div>
-        </sc-if>
-      </div>
-      <sc-if value="{{ cgHasEmpty }}" hint-placeholder-val="{{ false }}">
-        <p style="font-size:12px;color:#9AA5B4;margin:14px 4px 8px;text-align:center">¿Más fotos? Arrastralas a los espacios de abajo y entran solas a la rotación.</p>
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <sc-for list="{{ cgEmptyTiles }}" as="t" hint-placeholder-count="3">
-            <div style="width:150px;height:100px;border-radius:12px;overflow:hidden;{{ t.style }}">
-              <x-import component-from-global-scope="image-slot" from="assets/736a10fa-34ae-47d5-934b-83411dc335e1.js#/image-slot.js" id="{{ t.id }}" shape="rect" placeholder="Agregar foto" style="width:100%;height:100%;display:block" hint-size="150px,100px"></x-import>
-            </div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(transparent,rgba(27,58,107,0.45));pointer-events:none"></div>
+        <div style="position:absolute;left:20px;bottom:16px;display:flex;gap:8px">
+          <sc-for list="{{ cgDots }}" as="d" hint-placeholder-count="4">
+            <span sc-camel-on-click="{{ d.go }}" style="{{ d.dot }}"></span>
           </sc-for>
         </div>
-      </sc-if>
+        <div style="position:absolute;right:18px;bottom:14px;background:rgba(27,58,107,0.72);border-radius:30px;padding:6px 13px;font-size:12px;font-weight:700;color:#fff">{{ cgCounter }}</div>
+      </div>
+      <p style="font-size:11.5px;color:#9AA5B4;margin:12px 4px 0;text-align:center">Imágenes ilustrativas del servicio.</p>
     </div>
   </section>
 
@@ -363,22 +351,22 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+const CG_FOTOS = [
+  { src: 'assets/cuidado-1.jpg', alt: 'Cuidador de Vivam acompañando a un adulto mayor sentado en el sillón de su casa' },
+  { src: 'assets/cuidado-2.jpg', alt: 'Cuidadora de Vivam asistiendo a una señora mayor a caminar con bastón por el living de su casa' },
+  { src: 'assets/cuidado-3.jpg', alt: 'Cuidador de Vivam alcanzando un vaso de agua a un adulto mayor en su sillón' },
+  { src: 'assets/cuidado-4.jpg', alt: 'Cuidadora de Vivam sosteniendo del brazo a una señora mayor mientras camina por su casa' },
+];
+
 class Component extends DCLogic {
   componentDidMount() {
-    const poll = () => {
-      const ids = ['vivam-cg-1','vivam-cg-2','vivam-cg-3','vivam-cg-4'];
-      const filled = ids.filter(id => { const el = document.getElementById(id); return el && el.hasAttribute('data-filled'); });
-      const cur = (this.state.cgFilled || []).join(',');
-      if (filled.join(',') !== cur) this.setState({ cgFilled: filled, cgSlide: 0 });
-    };
-    this._cgPoll = setInterval(poll, 1000);
-    setTimeout(poll, 400);
-    this._cgTimer = setInterval(() => this.setState(s => {
-      const n = (s.cgFilled || []).length;
-      return n > 1 ? { cgSlide: ((s.cgSlide || 0) + 1) % n } : null;
-    }), 3000);
+    this._cgTimer = setInterval(
+      () => this.setState(st => ({ cgSlide: ((st.cgSlide || 0) + 1) % CG_FOTOS.length })),
+      5000
+    );
   }
-  componentWillUnmount() { if (this._cgTimer) clearInterval(this._cgTimer); if (this._cgPoll) clearInterval(this._cgPoll); }
+  componentWillUnmount() { if (this._cgTimer) clearInterval(this._cgTimer); }
+
   state = {
     cgSlide: 0,
     faqOpen: 0,
@@ -511,25 +499,20 @@ class Component extends DCLogic {
       toggle: () => this.setState(s => ({ faqOpen: s.faqOpen === i ? -1 : i })),
     }));
 
-    const allIds = ['vivam-cg-1','vivam-cg-2','vivam-cg-3','vivam-cg-4'];
-    const filled = this.state.cgFilled || [];
-    const frameIds = filled.length ? filled : ['vivam-cg-1'];
-    const cur = Math.min(this.state.cgSlide || 0, frameIds.length - 1);
-    const cgSlides = frameIds.map((id, i) => ({
-      id,
-      placeholder: 'Foto de cuidador/a de Vivam en domicilio — uniforme con logo visible',
-      style: 'position:absolute;inset:0;transition:opacity 800ms ease;opacity:' + (i === cur ? '1' : '0') + ';pointer-events:' + (i === cur ? 'auto' : 'none'),
+    const cur = (this.state.cgSlide || 0) % CG_FOTOS.length;
+    const cgSlides = CG_FOTOS.map((f, k) => ({
+      src: f.src,
+      alt: f.alt,
+      style: 'position:absolute;inset:0;transition:opacity 800ms ease;opacity:' + (k === cur ? '1' : '0') + ';pointer-events:' + (k === cur ? 'auto' : 'none'),
     }));
-    const cgDots = frameIds.map((id, i) => ({
-      dot: 'width:' + (i === cur ? '24px' : '9px') + ';height:9px;border-radius:9px;cursor:pointer;transition:all 300ms ease;background:' + (i === cur ? '#fff' : 'rgba(255,255,255,0.55)'),
-      go: () => this.setState({ cgSlide: i }),
+    const cgDots = CG_FOTOS.map((f, k) => ({
+      dot: 'width:' + (k === cur ? '24px' : '9px') + ';height:9px;border-radius:9px;cursor:pointer;transition:all 300ms ease;background:' + (k === cur ? '#fff' : 'rgba(255,255,255,0.55)'),
+      go: () => this.setState({ cgSlide: k }),
     }));
-    const cgEmptyTiles = allIds.filter(id => !frameIds.includes(id)).map(id => ({ id, style: 'border:1.5px dashed #C9DCD9;background:#F6FBFA' }));
+
     return {
-      cgSlides, cgDots, cgEmptyTiles,
-      cgShowNav: frameIds.length > 1,
-      cgHasEmpty: cgEmptyTiles.length > 0,
-      cgCounter: (cur + 1) + ' / ' + frameIds.length,
+      cgSlides, cgDots,
+      cgCounter: (cur + 1) + ' / ' + CG_FOTOS.length,
       trustItems, servicios, planes, planesIncluye, pasos, porque, zonas, zonaDots, faqs,
       form: this.state.form,
       onNombre: (e) => this.set('nombre', e),

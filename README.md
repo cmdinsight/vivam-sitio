@@ -12,7 +12,8 @@ publica los archivos tal cual en cada push a `main`.
 - `privacidad.html` — política de privacidad. Página aparte, HTML plano,
   sin el runtime de Claude Design. Enlazada desde el footer y desde la
   casilla de aceptación del formulario.
-- `assets/` — logo, mapa, el runtime de Claude Design y React 18 UMD.
+- `assets/` — logo, mapa, las cuatro fotos del carrusel (`cuidado-1` a
+  `cuidado-4`), el runtime de Claude Design y React 18 UMD.
 - `favicon.ico`, `apple-touch-icon.png`.
 
 ## Cómo está hecho
@@ -75,8 +76,17 @@ dirección médica · cobertura por barrios con mapa · preguntas frecuentes
   Source Serif 4 y Hanken Grotesk en header y footer). React y el runtime
   de Claude Design van empaquetados a propósito, para no depender de un
   CDN externo.
-- **`.image-slots.state.json` da 404** en la consola. Es un sidecar de
-  tiempo de diseño del runtime. Inofensivo.
+- **Las cuatro fotos del carrusel son generadas con IA**, no reales. Se
+  usan como ilustración hasta tener fotos de clientes de verdad, y el
+  carrusel lo dice al pie: "Imágenes ilustrativas del servicio." No
+  acompañarlas nunca de nombres ni de "nuestro equipo".
+  Dos de ellas (`cuidado-1` y `cuidado-3`) traen el logo de Vivam
+  renderizado por el generador: se parece pero no es el logo real, así
+  que no sirven como referencia de marca para uniformes ni impresión.
+  Y esas dos tienen un estilo más de catálogo que las otras dos, que son
+  documentales; conviene reemplazarlas primero cuando haya fotos reales.
+- Las fotos van a 1280x853 y calidad 82, ~140 KB cada una. El carrusel
+  se muestra a 820px, así que alcanza para pantallas de alta densidad.
 - **El footer venía con un mailto equivocado.** Apuntaba a
   `contacto@integramedicalgroup.com` mientras el texto visible decía
   `.uy`. Corregido acá. Como el footer es un artboard compartido con los
